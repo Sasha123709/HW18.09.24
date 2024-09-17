@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <Windows.h>
 using namespace std;
 
 void checkNumber(int& num) {
@@ -14,6 +15,8 @@ void checkNumber(int& num) {
 }
 
 int main() {
+    SetConsoleCP(1251); 
+    SetConsoleOutputCP(1251);
     int number;
 
 
