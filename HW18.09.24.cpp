@@ -29,56 +29,109 @@
 //    return 0;
 //}
 
+//#include <iostream>
+//#include <cstdlib>
+//#include <ctime>  
+//#include <Windows.h>
+//using namespace std;
+//
+//
+//void fillArray(double* arr, int size) {
+//    for (int i = 0; i < size; ++i) {
+//        arr[i] = (rand() % 10000) / 100.0; 
+//    }
+//}
+//
+//
+//void showArray(double* arr, int size) {
+//    for (int i = 0; i < size; ++i) {
+//        cout << arr[i] << " ";
+//    }
+//    cout << endl;
+//}
+//
+//int main() {
+//    srand(time(0));
+//    char choice;
+//    SetConsoleCP(1251);
+//    SetConsoleOutputCP(1251);
+//    do {
+//        int size;
+//        cout << "Введіть розмір масиву: ";
+//        cin >> size;
+//
+//        
+//        double* array = new double[size];
+//
+//        
+//        fillArray(array, size);
+//
+//        
+//        cout << "Ваш масив: ";
+//        showArray(array, size);
+//
+//        
+//        delete[] array;
+//
+//        
+//        cout << "Бажаєте створити новий масив? (y/n): ";
+//        cin >> choice;
+//
+//    } while (choice == 'y' || choice == 'Y');
+//
+//    cout << "Програма завершена." << endl;
+//    return 0;
+//}
+
 #include <iostream>
-#include <cstdlib>
-#include <ctime>  
+#include <cstdlib>  
+#include <ctime>    
 #include <Windows.h>
-using namespace std;
 
-
-void fillArray(double* arr, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; ++i) {
-        arr[i] = (rand() % 10000) / 100.0; 
+        std::cout << array[i] << " ";
     }
+    std::cout << std::endl;
 }
 
 
-void showArray(double* arr, int size) {
-    for (int i = 0; i < size; ++i) {
-        cout << arr[i] << " ";
+void swapEvenOdd(int* array, int size) {
+    for (int i = 1; i < size; i += 2) {
+        if (i + 1 < size) {
+            std::swap(array[i - 1], array[i]);
+        }
     }
-    cout << endl;
 }
 
 int main() {
-    srand(time(0));
-    char choice;
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    do {
-        int size;
-        cout << "Введіть розмір масиву: ";
-        cin >> size;
+    std::srand(std::time(nullptr)); 
 
-        
-        double* array = new double[size];
+    int size;
+    std::cout << "Введіть розмір масиву: ";
+    std::cin >> size;
 
-        
-        fillArray(array, size);
 
-        
-        cout << "Ваш масив: ";
-        showArray(array, size);
+    int* array = new int[size];
 
-        
-        delete[] array;
+    
+    for (int i = 0; i < size; ++i) {
+        array[i] = std::rand() % 100;
+    }
 
-        
-        cout << "Бажаєте створити новий масив? (y/n): ";
-        cin >> choice;
+    std::cout << "Початковий масив: ";
+    printArray(array, size);
 
-    } while (choice == 'y' || choice == 'Y');
 
-    cout << "Програма завершена." << endl;
+    swapEvenOdd(array, size);
+
+    std::cout << "Масив після обміну: ";
+    printArray(array, size);
+
+
+    delete[] array;
+
     return 0;
 }
